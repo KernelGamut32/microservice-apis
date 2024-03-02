@@ -269,6 +269,16 @@ components:
           items:
             $ref: '#/components/schemas/OrderItemSchema'
 
+    GetOrdersSchema:
+      type: object
+      required:
+        - orders
+      properties:
+        orders:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetOrderSchema'
+
 security:
   - oauth2:
       - getOrders
