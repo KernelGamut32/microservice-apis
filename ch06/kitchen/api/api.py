@@ -43,19 +43,19 @@ class KitchenSchedules(MethodView):
 
         query_set = [schedule for schedule in schedules]
 
-        cancelled = parameters.get("cancelled")
-        if cancelled is not None:
-            if cancelled:
+        progress = parameters.get("progress")
+        if progress is not None:
+            if progress:
                 query_set = [
                     schedule
                     for schedule in schedules
-                    if schedule["status"] == "cancelled"
+                    if schedule["status"] != "cancelled"
                 ]
             else:
                 query_set = [
                     schedule
                     for schedule in schedules
-                    if schedule["status"] != "cancelled"
+                    if schedule["status"] == "cancelled"
                 ]
 
         since = parameters.get("since")

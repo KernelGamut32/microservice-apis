@@ -2,7 +2,7 @@ openapi: 3.0.3
 
 info:
   title: Kitchen API
-  description: API that allows to manage the production of orders in the kitchen
+  description: API that allows to manage the production of food orders in the kitchen
   version: 1.0.0
 
 servers:
@@ -16,7 +16,7 @@ servers:
 paths:
   /kitchen/schedules:
     get:
-      summary: Returns a list of orders scheduled for production
+      summary: Returns a list of orders scheduled for creation in the kitchen
       tags:
         - kitchen
       parameters:
@@ -41,7 +41,7 @@ paths:
             format: 'date-time'
       responses:
         '200':
-          description: A list of scheduled orders
+          description: A list of scheduled food orders
           content:
             application/json:
               schema:
@@ -54,7 +54,7 @@ paths:
                       $ref: '#/components/schemas/GetScheduledOrderSchema'
 
     post:
-      summary: Schedules an order for production
+      summary: Schedules a food order for production
       tags:
         - kitchen
       requestBody:
@@ -65,7 +65,7 @@ paths:
               $ref: '#/components/schemas/ScheduleOrderSchema'
       responses:
         '201':
-          description: A JSON representation of the scheduled order
+          description: A JSON representation of the scheduled food order
           content:
             application/json:
               schema:
@@ -80,12 +80,12 @@ paths:
           type: string
           format: uuid
     get:
-      summary: Returns the status and details of a scheduled order
+      summary: Returns the status and details of a scheduled food order
       tags:
         - kitchen
       responses:
         '200':
-          description: A JSON representation of a scheduled order
+          description: A JSON representation of a scheduled food order
           content:
             application/json:
               schema:
@@ -94,7 +94,7 @@ paths:
           $ref: '#/components/responses/NotFound'
 
     put:
-      summary: Updates an existing scheduled order
+      summary: Updates an existing scheduled food order
       tags:
         - kitchen
       requestBody:
@@ -105,7 +105,7 @@ paths:
               $ref: '#/components/schemas/ScheduleOrderSchema'
       responses:
         '200':
-          description: A JSON representation of a scheduled order
+          description: A JSON representation of a scheduled food order
           content:
             application/json:
               schema:
@@ -114,12 +114,12 @@ paths:
           $ref: '#/components/responses/NotFound'
 
     delete:
-      summary: Deletes an existing order
+      summary: Deletes an existing food order
       tags:
         - kitchen
       responses:
         '204':
-          description: The resource was deleted successfully
+          description: The food order was deleted successfully
 
   /kitchen/schedules/{schedule_id}/status:
     parameters:
@@ -130,12 +130,12 @@ paths:
           type: string
           format: uuid
     get:
-      summary: Returns the status of a scheduled order
+      summary: Returns the status of a scheduled food order
       tags:
         - kitchen
       responses:
         '200':
-          description: A JSON representation of a scheduled order
+          description: A JSON representation of a scheduled food order
           content:
             application/json:
               schema:
@@ -152,12 +152,12 @@ paths:
           type: string
           format: uuid
     post:
-      summary: Cancels a scheduled order
+      summary: Cancels a scheduled food order
       tags:
         - kitchen
       responses:
         '200':
-          description: A JSON representation of a scheduled order
+          description: A JSON representation of a scheduled food order
           content:
             application/json:
               schema:
@@ -185,11 +185,11 @@ components:
       additionalProperties: false
       type: object
       required:
-        - product
+        - food
         - quantity
         - size
       properties:
-        product:
+        food:
           type: string
         size:
           type: string

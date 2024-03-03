@@ -6,9 +6,12 @@ verify_ssl = true
 [packages]
 flask-smorest = "*"
 pyyaml = "*"
+fastapi = "*"
+uvicorn = "*"
+apispec = "*"
 
 [requires]
-python_version = "3.10"
+python_version = "3.11"
 
 [dev-packages]
 black = "*"

@@ -8,9 +8,9 @@ from flask_smorest import Api
 from api.api import blueprint
 from config import BaseConfig
 
-
+print('Here')
 app = Flask(__name__)
-
+print('Here')
 app.config.from_object(BaseConfig)
 
 kitchen_api = Api(app)
@@ -18,6 +18,7 @@ kitchen_api = Api(app)
 kitchen_api.register_blueprint(blueprint)
 
 api_spec = yaml.safe_load((Path(__file__).parent / "oas.yaml").read_text())
+print(api_spec)
 spec = APISpec(
     title=api_spec["info"]["title"],
     version=api_spec["info"]["version"],
